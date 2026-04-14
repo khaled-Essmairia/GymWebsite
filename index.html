@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+	<title>Gym City | Professional Fitness Center in Tunis</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/jpeg" href="imagess/Logo.jpg">
+  <link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+  <style>
+    .wow:first-child {
+      visibility: hidden;
+    }
+    .logo a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    
+    /* Header extensions */
+    .header-controls {
+      display: flex;
+      align-items: center;
+    }
+    .lang-switch {
+      margin-right: 20px;
+      display: flex;
+      gap: 5px;
+    }
+    .lang-switch button {
+      background: transparent;
+      border: 1px solid #fff;
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+    .lang-switch button:hover {
+      background: #e20000;
+      border-color: #e20000;
+    }
+    
+    /* Custom features CSS */
+    .whatsapp-float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        right: 20px;
+        background-color: #25d366;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+    .whatsapp-float:hover {
+        background-color: #20b858;
+        color: #fff;
+        transform: scale(1.1);
+    }
+    .sticky-join {
+        position: fixed;
+        right: 20px;
+        bottom: 90px;
+        background: #e20000;
+        color: #fff;
+        padding: 12px 20px;
+        border-radius: 30px;
+        font-weight: bold;
+        box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        z-index: 100;
+        text-decoration: none;
+        transition: 0.3s;
+        text-transform: uppercase;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+    .sticky-join:hover {
+        background: #222;
+        color: #fff;
+    }
+
+    /* Calculator & Booking */
+    .calc-card select, .calc-card input, .booking-form input {
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        outline: none;
+        transition: 0.3s;
+        font-family: inherit;
+    }
+    .calc-card select:focus, .calc-card input:focus, .booking-form input:focus {
+        border-color: #e20000;
+        box-shadow: 0 0 5px rgba(226, 0, 0, 0.5);
+    }
+
+    [dir="rtl"] .logo a {
+        flex-direction: row-reverse;
+    }
+    [dir="rtl"] .lang-switch {
+        margin-right: 0;
+        margin-left: 20px;
+    }
+    [dir="rtl"] .sticky-join {
+        right: auto;
+        left: 20px;
+    }
+    [dir="rtl"] .whatsapp-float {
+        right: auto;
+        left: 20px;
+    }
+
+    @media(max-width: 768px) {
+        .trainers-content, .trans-content {
+            flex-direction: column !important;
+        }
+        .trainers-content .box, .trans-content .trans-card {
+            width: 100% !important;
+            margin: 0 0 20px 0 !important;
+        }
+        .calc-height-weight {
+            flex-direction: column !important;
+        }
+        .calc-height-weight > div {
+            width: 100% !important;
+        }
+        .testimonials-container {
+             flex-direction: column !important;
+        }
+    }
+  </style>
+  
+</head>
+<body>
+ 
+ <!-- Start Header  -->
+ <header>
+ 	 <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+ 	 	<div class="logo">
+ 	 		 <a href="">
+          <img src="imagess/Logo.jpg" alt="Gym City Logo" style="height: 45px; margin-right: 10px; border-radius: 5px;">
+          Gym <span>City</span>
+       </a>
+ 	 	</div>
+    
+    <div class="header-controls">
+      <div class="lang-switch">
+          <button onclick="setLang('en')">EN</button>
+          <button onclick="setLang('fr')">FR</button>
+          <button onclick="setLang('ar')">AR</button>
+      </div>
+      <a href="javascript:void(0)" class="ham-burger" style="position: relative; right: 0; top: 0;">
+           <span></span>	
+           <span></span>
+      </a>
+    </div>
+
+ 	 	<div class="nav">
+ 	 		<ul>
+ 	 			<li><a href="#home" data-i18n="nav_home">Home</a></li>
+ 	 			<li><a href="#about" data-i18n="nav_about">About</a></li>
+ 	 			<li><a href="#service" data-i18n="nav_service">Services</a></li>
+ 	 			<li><a href="#transformations" data-i18n="nav_results">Results</a></li>
+ 	 			<li><a href="#trainers" data-i18n="nav_trainers">Trainers</a></li>
+ 	 			<li><a href="#price" data-i18n="nav_price">Price</a></li>
+ 	 			<li><a href="#booking" data-i18n="nav_booking">Free Trial</a></li>
+ 	 			<li><a href="#calculator" data-i18n="nav_calc">Calculator</a></li>
+ 	 		</ul>
+ 	 	</div>
+ 	 </div>
+ </header>
+ <!-- End Header  -->
+
+  <!-- Start Home -->
+  <section class="home wow flash" id="home">
+  	 <div class="container">
+  	 	  <h1 class="wow slideInLeft" data-wow-delay="1s" data-i18n="welcome">Welcome to <span>Gym City</span></h1>
+  	 	  <h1 class="wow slideInRight" data-wow-delay="1s" data-i18n="greatness">Your journey to <span>greatness</span> starts here</h1>
+  	 </div>
+  	  <!-- go down -->
+  	      <a href="#about" class="go-down">
+  	      	  <i class="fa fa-angle-down" aria-hidden="true"></i>
+  	      </a>
+  	  <!-- go down -->
+
+  </section>
+  <!-- End Home -->
+
+
+ <!-- Start About -->
+  <section class="about" id="about">
+  	  <div class="container">
+  	  	  <div class="content">
+  	  	  	   <div class="box wow bounceInUp">
+  	  	  	   	   <div class="inner">
+  	  	  	   	   	   <div class="img">
+  	  	  	   	   	   	  <img src="images/about1.jpg" alt="about" />
+  	  	  	   	   	   </div>
+                       <div class="text">
+                       	   <h4 data-i18n="prof_assess">Professional Assessment</h4>
+                       	   <p data-i18n="prof_assess_desc">Get started with a free professional assessment. Our expert trainers at Gym City will evaluate your fitness level and help you set achievable goals tailored to your body and lifestyle.</p>
+                       </div>
+  	  	  	   	   </div>
+  	  	  	   </div>
+  	  	  	   	<div class="box wow bounceInUp" data-wow-delay="0.2s">
+  	  	  	   	   <div class="inner">
+  	  	  	   	   	   <div class="img">
+  	  	  	   	   	   	  <img src="images/about2.jpg" alt="about" />
+  	  	  	   	   	   </div>
+                       <div class="text">
+                       	   <h4 data-i18n="expert_coach">Expert Coaching</h4>
+                       	   <p data-i18n="expert_coach_desc">Experience the best training environment in Tunis. Our certified coaches provide personalized guidance, ensuring you perform exercises safely and effectively for maximum results.</p>
+                       </div>
+  	  	  	   	   </div>
+  	  	  	   </div>
+  	  	  	   <div class="box wow bounceInUp" data-wow-delay="0.4s">
+  	  	  	   	   <div class="inner">
+  	  	  	   	   	   <div class="img">
+  	  	  	   	   	   	  <img src="images/about3.jpg" alt="about" />
+  	  	  	   	   	   </div>
+                       <div class="text">
+                       	   <h4 data-i18n="achieve_goals">Achieve Your Goals</h4>
+                       	   <p data-i18n="achieve_goals_desc">Whether you want to build muscle, lose weight, or improve your endurance, Gym City is fully equipped with state-of-the-art machines and free weights to help you succeed.</p>
+                       </div>
+  	  	  	   	   </div>
+  	  	  	   </div>
+  	  	  </div>
+  	  </div>
+  </section>
+ <!-- End About -->
+
+
+ <!-- Start Service -->
+ <section class="service" id="service">
+ 	<div class="container">
+ 		 <div class="content">
+ 		 	  <div class="text box wow slideInLeft">
+                  <h2 data-i18n="services_title">Our Services</h2>
+                  <p data-i18n="services_p1">At Gym City, we offer a wide range of premium fitness services designed to help you reach your goals. From comprehensive cardiovascular equipment to specialized group classes, we provide everything you need for a complete fitness experience.</p>
+                  <p data-i18n="services_p2">Our facility in Tunis is equipped with modern, well-maintained machines, and our friendly staff is always available to guide you. Discover what we have to offer and take your training to the next level.</p>
+                  <a href="#contact" class="btn" data-i18n="btn_get_started">Get Started</a>
+ 		 	  </div>
+ 		 	  <div class="accordian box wow slideInRight">
+ 		 	  	    <div class="accordian-container active">
+ 		 	  	    	<div class="head">
+ 		 	  	    		<h4>Cardio Training</h4>
+ 		 	  	    		<span class="fa fa-angle-down"></span>
+ 		 	  	    	</div>
+ 		 	  	    	<div class="body">
+ 		 	  	    		<p>Boost your stamina and burn calories with our top-of-the-line cardiovascular equipment, including modern treadmills, ellipticals, rowing machines, and stationary bikes.</p>
+ 		 	  	    	</div>
+ 		 	  	    </div>
+ 		 	  	    <div class="accordian-container">
+ 		 	  	    	<div class="head">
+ 		 	  	    		<h4>Strength Training</h4>
+ 		 	  	    		<span class="fa fa-angle-up"></span>
+ 		 	  	    	</div>
+ 		 	  	    	<div class="body">
+ 		 	  	    		<p>Build strength and muscle mass. Our extensive free weights area, power racks, and resistance machines are perfectly designed for all fitness levels, from beginners to advanced lifters.</p>
+ 		 	  	    	</div>
+ 		 	  	    </div>
+ 		 	  	    <div class="accordian-container">
+ 		 	  	    	<div class="head">
+ 		 	  	    		<h4>Personal Coaching</h4>
+ 		 	  	    		<span class="fa fa-angle-up"></span>
+ 		 	  	    	</div>
+ 		 	  	    	<div class="body">
+ 		 	  	    		<p>Accelerate your progress with 1-on-1 sessions. Our personal trainers will design a highly customized workout program, teach you proper form, and keep you motivated every step of the way.</p>
+ 		 	  	    	</div>
+ 		 	  	    </div>
+ 		 	  </div>
+ 		 </div>
+ 	</div>
+ </section>
+ <!-- End Service -->
+
+<!-- Start Transformations -->
+<section class="transformations" id="transformations" style="padding: 60px 0; background: #e9ecef;">
+    <div class="container">
+        <h2 data-i18n="transform_title" style="text-align: center; margin-bottom: 40px;">Real Results</h2>
+        <div class="trans-content" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+            
+            <div class="trans-card wow slideInLeft" style="width: 48%; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                <div style="display: flex;">
+                    <div style="width: 50%; position: relative;">
+                        <img src="images/gallery1.jpg" style="width: 100%; height: 250px; object-fit: cover;">
+                        <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 12px;" data-i18n="before">Before</span>
+                    </div>
+                    <div style="width: 50%; position: relative;">
+                        <img src="images/gallery2.jpg" style="width: 100%; height: 250px; object-fit: cover;">
+                        <span style="position: absolute; bottom: 10px; right: 10px; background: rgba(226,0,0,0.8); color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 12px;" data-i18n="after">After</span>
+                    </div>
+                </div>
+                <div style="padding: 20px; text-align: center;">
+                    <h4 style="margin: 0 0 10px 0;" data-i18n="trans1_h4">Lost 15kg in 4 Months</h4>
+                    <p style="color: #666; margin: 0; font-size: 14px;" data-i18n="trans1_p">"The high intensity classes really paid off!" - Karim</p>
+                </div>
+            </div>
+
+            <div class="trans-card wow slideInRight" style="width: 48%; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                <div style="display: flex;">
+                    <div style="width: 50%; position: relative;">
+                        <img src="images/gallery3.jpg" style="width: 100%; height: 250px; object-fit: cover;">
+                        <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 12px;" data-i18n="before">Before</span>
+                    </div>
+                    <div style="width: 50%; position: relative;">
+                        <img src="images/gallery4.jpg" style="width: 100%; height: 250px; object-fit: cover;">
+                        <span style="position: absolute; bottom: 10px; right: 10px; background: rgba(226,0,0,0.8); color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 12px;" data-i18n="after">After</span>
+                    </div>
+                </div>
+                <div style="padding: 20px; text-align: center;">
+                    <h4 style="margin: 0 0 10px 0;" data-i18n="trans2_h4">Gained 8kg of Muscle</h4>
+                    <p style="color: #666; margin: 0; font-size: 14px;" data-i18n="trans2_p">"Consistent strength training changed everything." - Rami</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- End Transformations -->
+
+<!-- Start Booking -->
+<section class="booking" id="booking" style="padding: 80px 0; background: #e20000; color: #fff;">
+    <div class="container">
+        <h2 data-i18n="book_title" style="text-align: center; color: #fff; margin-bottom: 20px;">Book Your Free Session</h2>
+        <p data-i18n="book_subtitle" style="text-align: center; font-size: 16px; max-width: 600px; margin: 0 auto 40px; color: #ffcccc;">Take the first step towards your fitness goals. Book a free trial directly via WhatsApp.</p>
+        <div class="booking-form wow fadeInUp" style="max-width: 500px; margin: 0 auto; background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+            <div style="margin-bottom: 15px;">
+                <input type="text" id="book-name" data-i18n-placeholder="full_name" placeholder="Full Name" style="width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <input type="tel" id="book-phone" data-i18n-placeholder="phone" placeholder="Phone Number" style="width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px;">
+            </div>
+            <div style="margin-bottom: 25px;">
+                <input type="text" id="book-time" data-i18n-placeholder="pref_time" placeholder="Preferred Day/Time (e.g. Mon 10:00 AM)" style="width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px;">
+            </div>
+            <button onclick="submitBooking()" data-i18n="book_btn" style="width: 100%; padding: 16px; background: #222; color: #fff; border: none; border-radius: 5px; font-size: 18px; font-weight: bold; cursor: pointer; text-transform: uppercase; transition: 0.3s;">Book Now via WhatsApp</button>
+        </div>
+    </div>
+</section>
+<!-- End Booking -->
+
+
+<!-- Start Trainers -->
+<section class="trainers" id="trainers" style="padding: 60px 0; background: #fdfdfd;">
+    <div class="container">
+        <h2 data-i18n="trainers_title" style="text-align: center; margin-bottom: 40px;">Expert Coaches</h2>
+        <div class="trainers-content" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+            <div class="box wow bounceInUp" style="width: 31%; background: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-radius: 8px; text-align: center; margin-bottom: 20px;">
+                <img src="imagess/coach.jpg" alt="Coach" style="width: 100%; height: 250px; object-fit: cover; border-top-left-radius: 8px; border-top-right-radius: 8px;" />
+                <h4 style="margin: 15px 0 5px;">Ahmed Ben Ali</h4>
+                <p style="color: #e20000; font-weight: bold; margin: 0 0 10px 0;">Head Strength Coach</p>
+                <p style="color: #777; padding: 0 15px 20px;">Ahmed specializes in functional strength and muscle building to get you to your peak performance.</p>
+            </div>
+            <div class="box wow bounceInUp" data-wow-delay="0.2s" style="width: 31%; background: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-radius: 8px; text-align: center; margin-bottom: 20px;">
+                <img src="imagess/coach.jpg" alt="Coach" style="width: 100%; height: 250px; object-fit: cover; border-top-left-radius: 8px; border-top-right-radius: 8px;" />
+                <h4 style="margin: 15px 0 5px;">Sami Mansour</h4>
+                <p style="color: #e20000; font-weight: bold; margin: 0 0 10px 0;">HIIT & Cardio Expert</p>
+                <p style="color: #777; padding: 0 15px 20px;">Sami leads our high-intensity group classes directly tailored to burn fat and promote endurance.</p>
+            </div>
+            <div class="box wow bounceInUp" data-wow-delay="0.4s" style="width: 31%; background: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-radius: 8px; text-align: center; margin-bottom: 20px;">
+                <img src="imagess/member.jpg" alt="Coach" style="width: 100%; height: 250px; object-fit: cover; border-top-left-radius: 8px; border-top-right-radius: 8px;" onerror="this.src='imagess/coach.jpg'" />
+                <h4 style="margin: 15px 0 5px;">Yasmine Trabelsi</h4>
+                <p style="color: #e20000; font-weight: bold; margin: 0 0 10px 0;">Yoga & Core Trainer</p>
+                <p style="color: #777; padding: 0 15px 20px;">Yasmine is passionate about mobility, core stability, and overall body mechanics.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Trainers -->
+
+<!-- Start Calculator -->
+<section class="calculator" id="calculator" style="padding: 80px 0; background: #222; color: #fff;">
+    <div class="container">
+        <h2 data-i18n="calc_title" style="text-align: center; margin-bottom: 20px; color: #fff;">Fitness Calculator</h2>
+        <p data-i18n="calc_subtitle" style="text-align: center; max-width: 600px; margin: 0 auto 40px; color: #bbb; line-height: 1.6;">Optimize your nutrition. Calculate your daily protein intake based on your body metrics and fitness goals.</p>
+        
+        <div class="calc-card wow zoomIn" style="background: #333; max-width: 500px; margin: 0 auto; padding: 40px; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
+            <div style="margin-bottom: 20px;">
+                <label data-i18n="calc_gender" style="display: block; margin-bottom: 8px; font-weight: bold; color: #eee;">Gender</label>
+                <select id="calc-gender" style="width: 100%; padding: 14px; border-radius: 6px; border: 1px solid #555; background: #444; color: #fff; font-size: 16px;">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            
+            <div class="calc-height-weight" style="display: flex; justify-content: space-between;">
+                <div style="width: 48%; margin-bottom: 20px;">
+                    <label data-i18n="calc_weight" style="display: block; margin-bottom: 8px; font-weight: bold; color: #eee;">Weight (kg)</label>
+                    <input type="number" id="calc-weight" placeholder="e.g. 75" style="width: 100%; padding: 14px; border-radius: 6px; border: 1px solid #555; background: #444; color: #fff; font-size: 16px;">
+                </div>
+                <div style="width: 48%; margin-bottom: 20px;">
+                    <label data-i18n="calc_height" style="display: block; margin-bottom: 8px; font-weight: bold; color: #eee;">Height (cm)</label>
+                    <input type="number" id="calc-height" placeholder="e.g. 180" style="width: 100%; padding: 14px; border-radius: 6px; border: 1px solid #555; background: #444; color: #fff; font-size: 16px;">
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 30px;">
+                <label data-i18n="calc_goal" style="display: block; margin-bottom: 8px; font-weight: bold; color: #eee;">Your Goal</label>
+                <select id="calc-goal" style="width: 100%; padding: 14px; border-radius: 6px; border: 1px solid #555; background: #444; color: #fff; font-size: 16px;">
+                    <option value="lose">Lose Weight</option>
+                    <option value="maintain">Maintain</option>
+                    <option value="gain">Gain Muscle</option>
+                </select>
+            </div>
+            
+            <button onclick="calculateProtein()" data-i18n="calc_btn" style="width: 100%; padding: 16px; background: #e20000; color: #fff; border: none; border-radius: 6px; font-size: 18px; font-weight: bold; cursor: pointer; text-transform: uppercase; transition: background 0.3s;">Calculate</button>
+            
+            <div id="calc-result-box" style="display: none; margin-top: 25px; padding: 20px; background: rgba(40, 167, 69, 0.15); border-left: 5px solid #28a745; border-radius: 6px; text-align: center;">
+                <p id="calc-result-text" style="margin: 0; font-size: 18px; color: #fff;"></p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Calculator -->
+
+ <!-- Start Contact -->
+  <section class="contact" id="contact">
+     <div class="container">
+        <div class="content">
+            <div class="box form wow slideInLeft">
+               <form>
+                  <input type="text" placeholder="Enter Full Name">
+                  <input type="email" placeholder="Enter Email Address">
+                  <input type="tel" placeholder="Enter Phone Number">
+                  <textarea placeholder="Enter Your Message"></textarea>
+                  <button type="submit">Send Message</button>
+               </form>
+            </div>
+            <div class="box text wow slideInRight">
+                 <h2 data-i18n="contact_title">Get Connected with Gym City</h2>
+                  <p class="title-p">Visit us at our modern facility in Tunis or reach out through our contact details below. Our professional team is ready to assist you!</p>
+                  <div class="info">
+                      <ul>
+                          <li><span class="fa fa-map-marker"></span> 57 Av. Khaled Ibn El Walid, Tunis</li>
+                          <li><span class="fa fa-phone"></span> +216 29 332 003</li>
+                          <li><span class="fa fa-envelope"></span> info@gymcity.tn</li>
+                      </ul>
+                  </div>
+                  
+                  <!-- Google Maps Iframe embedded -->
+                  <div style="margin-top: 20px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                      <iframe src="https://maps.google.com/maps?q=36.8570139,10.2656309&hl=en&z=17&output=embed" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                  </div>
+
+                  <div class="social" style="margin-top: 20px;">
+                       <a href="https://www.facebook.com/gymcityaouina" target="_blank"><span class="fa fa-facebook"></span></a>
+                       <a href="https://www.instagram.com/gymcityy/?hl=fr" target="_blank"><span class="fa fa-instagram"></span></a>
+                  </div>
+
+                  <div class="copy">
+                      &copy; 2026 Gym City. All Rights Reserved.
+                  </div>
+            </div>
+        </div>
+     </div>
+  </section>
+ <!-- End Contact -->
+
+ <!-- WhatsApp Floating Button -->
+ <a href="https://wa.me/21629332003" class="whatsapp-float wow bounceInUp" target="_blank" title="Contact Us on WhatsApp">
+    <i class="fa fa-whatsapp"></i>
+ </a>
+
+ <!-- Sticky Join Now Button -->
+ <a href="#booking" class="sticky-join wow slideInRight" data-i18n="sticky_join">
+    Join Now
+ </a>
+
+
+ <!-- jquery -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+    // Language Translation System
+    const translations = {
+        en: {
+            nav_home: "Home", nav_about: "About", nav_service: "Services", nav_results: "Results",
+            nav_trainers: "Trainers", nav_price: "Price", nav_booking: "Free Trial", 
+            nav_calc: "Calculator", nav_contact: "Contact",
+            welcome: "Welcome to <span>Gym City</span>", greatness: "Your journey to <span>greatness</span> starts here",
+            book_title: "Book Your Free Session", 
+            book_subtitle: "Take the first step towards your fitness goals. Book a free trial directly via WhatsApp.",
+            book_btn: "Book Now via WhatsApp", full_name: "Full Name", phone: "Phone Number", pref_time: "Preferred Day/Time (e.g. Mon 10:00 AM)",
+            transform_title: "Real Results", before: "Before", after: "After",
+            trans1_h4: "Lost 15kg in 4 Months", trans1_p: '"The high intensity classes really paid off!" - Karim',
+            trans2_h4: "Gained 8kg of Muscle", trans2_p: '"Consistent strength training changed everything." - Rami',
+            sticky_join: "Join Now",
+            calc_title: "Fitness Calculator", calc_subtitle: "Optimize your nutrition. Calculate your daily protein intake based on your body metrics and fitness goals.",
+            calc_gender: "Gender", calc_weight: "Weight (kg)", calc_height: "Height (cm)", calc_goal: "Your Goal",
+            calc_btn: "Calculate",
+            services_title: "Our Services", services_p1: "At Gym City, we offer a wide range of premium fitness services designed to help you reach your goals.", services_p2: "Our facility in Tunis is equipped with modern, well-maintained machines.",
+            btn_get_started: "Get Started",
+            prof_assess: "Professional Assessment", prof_assess_desc: "Get started with a free professional assessment. Our expert trainers at Gym City will evaluate your fitness level.",
+            expert_coach: "Expert Coaching", expert_coach_desc: "Experience the best training environment in Tunis. Our certified coaches provide personalized guidance.",
+            achieve_goals: "Achieve Your Goals", achieve_goals_desc: "Whether you want to build muscle, lose weight, or improve your endurance, Gym City is fully equipped.",
+            trainers_title: "Expert Coaches", contact_title: "Get Connected with Gym City"
+        },
+        fr: {
+            nav_home: "Accueil", nav_about: "À propos", nav_service: "Services", nav_results: "Résultats",
+            nav_trainers: "Coachs", nav_price: "Tarifs", nav_booking: "Essai Gratuit", 
+            nav_calc: "Calculateur", nav_contact: "Contact",
+            welcome: "Bienvenue à <span>Gym City</span>", greatness: "Votre voyage vers la <span>grandeur</span> commence ici",
+            book_title: "Réservez votre séance gratuite", 
+            book_subtitle: "Faites le premier pas vers vos objectifs. Réservez un essai gratuit via WhatsApp.",
+            book_btn: "Réserver via WhatsApp", full_name: "Nom Complet", phone: "Numéro de téléphone", pref_time: "Jour/Heure (ex. Lun 10:00)",
+            transform_title: "Vrais Résultats", before: "Avant", after: "Après",
+            trans1_h4: "Perdu 15kg en 4 Mois", trans1_p: '"Les cours à haute intensité ont vraiment payé !" - Karim',
+            trans2_h4: "Prise de 8kg de Muscle", trans2_p: '"La musculation régulière a tout changé." - Rami',
+            sticky_join: "Rejoindre",
+            calc_title: "Calculateur", calc_subtitle: "Optimisez votre nutrition. Calculez vos protéines.",
+            calc_gender: "Sexe", calc_weight: "Poids (kg)", calc_height: "Taille (cm)", calc_goal: "Objectif",
+            calc_btn: "Calculer",
+            services_title: "Nos Services", services_p1: "À Gym City, nous offrons de nombreux services fitness pour atteindre vos objectifs.", services_p2: "Notre établissement à Tunis est équipé de machines modernes.",
+            btn_get_started: "Commencer",
+            prof_assess: "Évaluation Pro", prof_assess_desc: "Commencez avec une évaluation gratuite pour définir vos objectifs.",
+            expert_coach: "Coaching Expert", expert_coach_desc: "Découvrez le meilleur environnement à Tunis avec nos coachs certifiés.",
+            achieve_goals: "Atteignez vos Objectifs", achieve_goals_desc: "Que vous souhaitiez prendre du muscle ou perdre du poids, Gym City est là.",
+            trainers_title: "Coachs Experts", contact_title: "Contactez Gym City"
+        },
+        ar: {
+            nav_home: "الرئيسية", nav_about: "من نحن", nav_service: "الخدمات", nav_results: "النتائج",
+            nav_trainers: "المدربين", nav_price: "الأسعار", nav_booking: "تجربة مجانية", 
+            nav_calc: "الحاسبة", nav_contact: "تواصل معنا",
+            welcome: "مرحبا بك في <span>Gym City</span>", greatness: "رحلتك نحو <span>العظمة</span> تبدأ هنا",
+            book_title: "احجز جلستك المجانية", 
+            book_subtitle: "اتخذ الخطوة الأولى نحو أهدافك. احجز جلسة مجانية عبر الواتساب.",
+            book_btn: "احجز عبر الواتساب", full_name: "الاسم الكامل", phone: "رقم الهاتف", pref_time: "الوقت المفضل (مثال الاثنين 10 صباحًا)",
+            transform_title: "نتائج حقيقية", before: "قبل", after: "بعد",
+            trans1_h4: "خسر 15 كغ في 4 أشهر", trans1_p: '"الحصص المكثفة جابت نتيجة!" - كريم',
+            trans2_h4: "اكتسب 8 كغ من العضلات", trans2_p: '"التمارين المنتظمة غيرت كل شيء." - رامي',
+            sticky_join: "انضم الآن",
+            calc_title: "حاسبة اللياقة", calc_subtitle: "احسب حاجتك اليومية من البروتين وفقاً لأهدافك.",
+            calc_gender: "الجنس", calc_weight: "الوزن (كغ)", calc_height: "الطول (سم)", calc_goal: "هدفك",
+            calc_btn: "احسب",
+            services_title: "خدماتنا", services_p1: "في جيم سيتي، نقدم مجموعة من الخدمات لمساعدتك في أهدافك.", services_p2: "قاعتنا في تونس مجهزة بأحدث الآلات.",
+            btn_get_started: "ابدأ الآن",
+            prof_assess: "تقييم احترافي", prof_assess_desc: "ابدأ تقييمًا مجانيًا لمستوى لياقتك البدنية مع خبرائنا.",
+            expert_coach: "تدريب احترافي", expert_coach_desc: "أفضل بيئة تدريب في تونس بمدربين معتمدين.",
+            achieve_goals: "حقق أهدافك", achieve_goals_desc: "مهما كان هدفك، جيم سيتي مجهز بالكامل لدعمك.",
+            trainers_title: "المدربين", contact_title: "تواصل مع جيم سيتي"
+        }
+    };
+
+    function setLang(lang) {
+        localStorage.setItem('gym_lang', lang);
+        
+        // Handle layout direction RTL/LTR
+        if(lang === 'ar') {
+            document.documentElement.setAttribute('dir', 'rtl');
+            document.documentElement.setAttribute('lang', 'ar');
+        } else {
+            document.documentElement.setAttribute('dir', 'ltr');
+            document.documentElement.setAttribute('lang', lang);
+        }
+        
+        // Inject translation values
+        document.querySelectorAll("[data-i18n]").forEach(el => {
+            let key = el.getAttribute("data-i18n");
+            if(translations[lang] && translations[lang][key]) {
+                el.innerHTML = translations[lang][key];
+            }
+        });
+        
+        document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+            let key = el.getAttribute("data-i18n-placeholder");
+            if(translations[lang] && translations[lang][key]) {
+                el.setAttribute("placeholder", translations[lang][key]);
+            }
+        });
+    }
+
+    // Initiative load
+    let currentLang = localStorage.getItem('gym_lang') || 'en';
+    setLang(currentLang);
+
+    // Free Booking Logic
+    function submitBooking() {
+        let name = document.getElementById('book-name').value;
+        let phone = document.getElementById('book-phone').value;
+        let time = document.getElementById('book-time').value;
+        
+        if(!name || !phone || !time) {
+            alert("Please fill all booking fields.");
+            return;
+        }
+
+        let phoneNum = "21629332003";
+        let msg = `Hello, I want to book a free training session. My name is ${name}, my phone is ${phone}, preferred time: ${time}`;
+        window.open(`https://wa.me/${phoneNum}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    // Fitness Calculator Logic
+    function calculateProtein() {
+        let weight = document.getElementById("calc-weight").value;
+        let height = document.getElementById("calc-height").value;
+        let goal = document.getElementById("calc-goal").value;
+        let resultBox = document.getElementById("calc-result-box");
+        let resultText = document.getElementById("calc-result-text");
+
+        if(!weight || weight <= 0 || !height || height <= 0) {
+            alert("Please enter valid positive numbers for weight and height.");
+            return;
+        }
+
+        let multiplier = 1.6;
+        if(goal === "maintain") multiplier = 1.8;
+        if(goal === "gain") multiplier = 2.2;
+
+        let protein = Math.round(weight * multiplier);
+
+        // Language consideration fallback to English inside results unless implemented dynamically
+        let activeLang = document.documentElement.getAttribute('lang') || 'en';
+        let resMsg = `You need <strong style="color: #4cd137; font-size: 24px;">${protein}g</strong> of protein per day.`;
+        if (activeLang === 'fr') resMsg = `Vous avez besoin de <strong style="color: #4cd137; font-size: 24px;">${protein}g</strong> de protéines par jour.`;
+        if (activeLang === 'ar') resMsg = `أنت بحاجة إلى <strong style="color: #4cd137; font-size: 24px;">${protein}غ</strong> من البروتين يومياَ.`;
+
+        resultText.innerHTML = resMsg;
+
+        // Smooth Appearance Reset
+        resultBox.classList.remove("fadeIn", "animated");
+        resultBox.style.display = "none";
+
+        setTimeout(() => {
+            resultBox.style.display = "block";
+            resultBox.classList.add("animated", "fadeIn");
+        }, 50);
+    }
+</script>
+
+<script>
+	$(document).ready(function(){
+
+      $(".ham-burger, .nav ul li a").click(function(){
+       
+        $(".nav").toggleClass("open")
+
+        $(".ham-burger").toggleClass("active");
+      })      
+      $(".accordian-container").click(function(){
+      	$(".accordian-container").children(".body").slideUp();
+      	$(".accordian-container").removeClass("active")
+      	$(".accordian-container").children(".head").children("span").removeClass("fa-angle-down").addClass("fa-angle-up")
+      	$(this).children(".body").slideDown();
+      	$(this).addClass("active")
+      	$(this).children(".head").children("span").removeClass("fa-angle-up").addClass("fa-angle-down")
+      })
+
+       $(".nav ul li a, .go-down").click(function(event){
+         if(this.hash !== ""){
+
+              event.preventDefault();
+
+              var hash=this.hash; 
+
+              $('html,body').animate({
+                scrollTop:$(hash).offset().top
+              },800 , function(){
+                 window.location.hash=hash;
+              });
+
+              // add active class in navigation
+              $(".nav ul li a").removeClass("active")
+              $(this).addClass("active")
+         }
+      })
+})
+
+</script>
+<script src="js/wow.min.js"></script>
+<script>
+    wow = new WOW(
+      {
+        animateClass: 'animated',
+        offset:       0,
+      }
+    );
+    wow.init();
+  </script>
+</body>
+</html>
