@@ -51,6 +51,7 @@ header .nav{
 	height: 100%;
 	z-index: 99;
 	padding:100px 0px 15px; 
+	overflow-y: auto;
 	-webkit-transform: translateX(100%);
 	transform: translateX(100%);
 	-webkit-transition: transform .5s ease;

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-	<title>Gym City | Professional Fitness Center in Tunis</title>
+	<title id="env-title">Gym City | Professional Fitness Center in Tunis</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/jpeg" href="imagess/Logo.jpg">
+  <script src="js/env.js"></script>
+  <link id="env-favicon" rel="icon" type="image/jpeg" href="imagess/Logo.jpg">
   <link rel="stylesheet" href="css/animate.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
   <style>
@@ -117,7 +118,32 @@
         left: 20px;
     }
 
+    /* Price & Schedule CSS */
+    .price-section { padding: 60px 0; background: #fdfdfd; }
+    .price-section h2 { text-align: center; margin-bottom: 40px; }
+    .price-content { display: flex; justify-content: space-between; flex-wrap: wrap; }
+    .price-card { width: 31%; background: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-radius: 8px; text-align: center; margin-bottom: 20px; padding: 30px 20px; transition: 0.3s; border: 2px solid transparent; }
+    .price-card:hover { transform: translateY(-10px); border-color: #e20000; box-shadow: 0 10px 20px rgba(226,0,0,0.2); }
+    .price-card h4 { font-size: 24px; margin-bottom: 15px; color: #222; }
+    .price-card .amount { font-size: 36px; color: #e20000; font-weight: bold; margin-bottom: 20px; }
+    .price-card ul { list-style: none; padding: 0; margin-bottom: 30px; }
+    .price-card ul li { margin-bottom: 10px; color: #666; }
+    .price-card a { display: inline-block; padding: 10px 30px; background: #222; color: #fff; border-radius: 30px; text-decoration: none; transition: 0.3s; }
+    .price-card a:hover { background: #e20000; }
+
+    .schedule-section { padding: 60px 0; background: #e9ecef; }
+    .schedule-section h2 { text-align: center; margin-bottom: 40px; }
+    .schedule-tables { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .schedule-table-wrap { width: 48%; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .schedule-table-wrap h4 { text-align: center; margin-bottom: 20px; color: #e20000; font-size: 20px; }
+    .schedule-table { width: 100%; border-collapse: collapse; }
+    .schedule-table th, .schedule-table td { padding: 12px 15px; border-bottom: 1px solid #ddd; text-align: left; }
+    [dir="rtl"] .schedule-table th, [dir="rtl"] .schedule-table td { text-align: right; }
+    .schedule-table th { background: #f4f4f4; color: #333; font-weight: bold; }
+
     @media(max-width: 768px) {
+        .price-card, .schedule-table-wrap { width: 100% !important; margin-bottom: 20px !important; }
+        .schedule-tables { flex-direction: column !important; }
         .trainers-content, .trans-content {
             flex-direction: column !important;
         }
@@ -145,8 +171,8 @@
  	 <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
  	 	<div class="logo">
  	 		 <a href="">
-          <img src="imagess/Logo.jpg" alt="Gym City Logo" style="height: 45px; margin-right: 10px; border-radius: 5px;">
-          Gym <span>City</span>
+          <img id="env-logo-img" src="imagess/Logo.jpg" alt="Gym City Logo" style="height: 45px; margin-right: 10px; border-radius: 5px;">
+          <span id="env-logo-text">Gym <span>City</span></span>
        </a>
  	 	</div>
     
@@ -170,8 +196,10 @@
  	 			<li><a href="#transformations" data-i18n="nav_results">Results</a></li>
  	 			<li><a href="#trainers" data-i18n="nav_trainers">Trainers</a></li>
  	 			<li><a href="#price" data-i18n="nav_price">Price</a></li>
+ 	 			<li><a href="#schedule" data-i18n="nav_schedule">Working Hours</a></li>
  	 			<li><a href="#booking" data-i18n="nav_booking">Free Trial</a></li>
  	 			<li><a href="#calculator" data-i18n="nav_calc">Calculator</a></li>
+ 	 			<li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
  	 		</ul>
  	 	</div>
  	 </div>
@@ -376,6 +404,55 @@
 </section>
 <!-- End Trainers -->
 
+<!-- Start Price -->
+<section class="price-section" id="price">
+    <div class="container">
+        <h2 data-i18n="price_title" class="wow slideInUp">Membership Plans</h2>
+        <div class="price-content" id="env-pricing-container">
+            <!-- Dynamically populated from env.js -->
+        </div>
+    </div>
+</section>
+<!-- End Price -->
+
+<!-- Start Schedule -->
+<section class="schedule-section" id="schedule">
+    <div class="container">
+        <h2 data-i18n="schedule_title" class="wow slideInUp">Working Hours</h2>
+        <div class="schedule-tables">
+            <div class="schedule-table-wrap wow slideInLeft">
+                <h4 data-i18n="sched_normal">Normal Hours</h4>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th data-i18n="sched_day">Day</th>
+                            <th data-i18n="sched_time">Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="env-sched-normal">
+                        <!-- Dynamically populated from env.js -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="schedule-table-wrap wow slideInRight">
+                <h4 data-i18n="sched_ramadan">Ramadan Hours</h4>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th data-i18n="sched_day">Day</th>
+                            <th data-i18n="sched_time">Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="env-sched-ramadan">
+                        <!-- Dynamically populated from env.js -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Schedule -->
+
 <!-- Start Calculator -->
 <section class="calculator" id="calculator" style="padding: 80px 0; background: #222; color: #fff;">
     <div class="container">
@@ -439,23 +516,23 @@
                   <p class="title-p">Visit us at our modern facility in Tunis or reach out through our contact details below. Our professional team is ready to assist you!</p>
                   <div class="info">
                       <ul>
-                          <li><span class="fa fa-map-marker"></span> 57 Av. Khaled Ibn El Walid, Tunis</li>
-                          <li><span class="fa fa-phone"></span> +216 29 332 003</li>
-                          <li><span class="fa fa-envelope"></span> info@gymcity.tn</li>
+                          <li id="env-address"><span class="fa fa-map-marker"></span> 57 Av. Khaled Ibn El Walid, Tunis</li>
+                          <li id="env-phone"><span class="fa fa-phone"></span> +216 29 332 003</li>
+                          <li id="env-email"><span class="fa fa-envelope"></span> info@gymcity.tn</li>
                       </ul>
                   </div>
                   
                   <!-- Google Maps Iframe embedded -->
                   <div style="margin-top: 20px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                      <iframe src="https://maps.google.com/maps?q=36.8570139,10.2656309&hl=en&z=17&output=embed" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                      <iframe id="env-map" src="https://maps.google.com/maps?q=36.8570139,10.2656309&hl=en&z=17&output=embed" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                   </div>
 
                   <div class="social" style="margin-top: 20px;">
-                       <a href="https://www.facebook.com/gymcityaouina" target="_blank"><span class="fa fa-facebook"></span></a>
-                       <a href="https://www.instagram.com/gymcityy/?hl=fr" target="_blank"><span class="fa fa-instagram"></span></a>
+                       <a id="env-fb" href="https://www.facebook.com/gymcityaouina" target="_blank"><span class="fa fa-facebook"></span></a>
+                       <a id="env-ig" href="https://www.instagram.com/gymcityy/?hl=fr" target="_blank"><span class="fa fa-instagram"></span></a>
                   </div>
 
-                  <div class="copy">
+                  <div class="copy" id="env-copyright">
                       &copy; 2026 Gym City. All Rights Reserved.
                   </div>
             </div>
@@ -465,7 +542,7 @@
  <!-- End Contact -->
 
  <!-- WhatsApp Floating Button -->
- <a href="https://wa.me/21629332003" class="whatsapp-float wow bounceInUp" target="_blank" title="Contact Us on WhatsApp">
+ <a id="env-wa-float" href="https://wa.me/21629332003" class="whatsapp-float wow bounceInUp" target="_blank" title="Contact Us on WhatsApp">
     <i class="fa fa-whatsapp"></i>
  </a>
 
@@ -484,8 +561,10 @@
         en: {
             nav_home: "Home", nav_about: "About", nav_service: "Services", nav_results: "Results",
             nav_trainers: "Trainers", nav_price: "Price", nav_booking: "Free Trial", 
-            nav_calc: "Calculator", nav_contact: "Contact",
-            welcome: "Welcome to <span>Gym City</span>", greatness: "Your journey to <span>greatness</span> starts here",
+            nav_calc: "Calculator", nav_schedule: "Working Hours", nav_contact: "Contact",
+            price_title: "Membership Plans", plan_choose: "Choose Plan",
+            schedule_title: "Working Hours", sched_normal: "Normal Hours", sched_ramadan: "Ramadan Hours", sched_day: "Day", sched_time: "Time",
+            welcome: `Welcome to <span>${GYM_ENV.gymName}</span>`, greatness: "Your journey to <span>greatness</span> starts here",
             book_title: "Book Your Free Session", 
             book_subtitle: "Take the first step towards your fitness goals. Book a free trial directly via WhatsApp.",
             book_btn: "Book Now via WhatsApp", full_name: "Full Name", phone: "Phone Number", pref_time: "Preferred Day/Time (e.g. Mon 10:00 AM)",
@@ -496,18 +575,20 @@
             calc_title: "Fitness Calculator", calc_subtitle: "Optimize your nutrition. Calculate your daily protein intake based on your body metrics and fitness goals.",
             calc_gender: "Gender", calc_weight: "Weight (kg)", calc_height: "Height (cm)", calc_goal: "Your Goal",
             calc_btn: "Calculate",
-            services_title: "Our Services", services_p1: "At Gym City, we offer a wide range of premium fitness services designed to help you reach your goals.", services_p2: "Our facility in Tunis is equipped with modern, well-maintained machines.",
+            services_title: "Our Services", services_p1: `At ${GYM_ENV.gymName}, we offer a wide range of premium fitness services designed to help you reach your goals.`, services_p2: "Our facility in Tunis is equipped with modern, well-maintained machines.",
             btn_get_started: "Get Started",
-            prof_assess: "Professional Assessment", prof_assess_desc: "Get started with a free professional assessment. Our expert trainers at Gym City will evaluate your fitness level.",
+            prof_assess: "Professional Assessment", prof_assess_desc: `Get started with a free professional assessment. Our expert trainers at ${GYM_ENV.gymName} will evaluate your fitness level.`,
             expert_coach: "Expert Coaching", expert_coach_desc: "Experience the best training environment in Tunis. Our certified coaches provide personalized guidance.",
-            achieve_goals: "Achieve Your Goals", achieve_goals_desc: "Whether you want to build muscle, lose weight, or improve your endurance, Gym City is fully equipped.",
-            trainers_title: "Expert Coaches", contact_title: "Get Connected with Gym City"
+            achieve_goals: "Achieve Your Goals", achieve_goals_desc: `Whether you want to build muscle, lose weight, or improve your endurance, ${GYM_ENV.gymName} is fully equipped.`,
+            trainers_title: "Expert Coaches", contact_title: `Get Connected with ${GYM_ENV.gymName}`
         },
         fr: {
             nav_home: "Accueil", nav_about: "À propos", nav_service: "Services", nav_results: "Résultats",
             nav_trainers: "Coachs", nav_price: "Tarifs", nav_booking: "Essai Gratuit", 
-            nav_calc: "Calculateur", nav_contact: "Contact",
-            welcome: "Bienvenue à <span>Gym City</span>", greatness: "Votre voyage vers la <span>grandeur</span> commence ici",
+            nav_calc: "Calculateur", nav_schedule: "Horaires", nav_contact: "Contact",
+            price_title: "Abonnements", plan_choose: "Choisir",
+            schedule_title: "Heures d'Ouverture", sched_normal: "Horaires Normaux", sched_ramadan: "Horaires Ramadan", sched_day: "Jour", sched_time: "Heure",
+            welcome: `Bienvenue à <span>${GYM_ENV.gymName}</span>`, greatness: "Votre voyage vers la <span>grandeur</span> commence ici",
             book_title: "Réservez votre séance gratuite", 
             book_subtitle: "Faites le premier pas vers vos objectifs. Réservez un essai gratuit via WhatsApp.",
             book_btn: "Réserver via WhatsApp", full_name: "Nom Complet", phone: "Numéro de téléphone", pref_time: "Jour/Heure (ex. Lun 10:00)",
@@ -518,18 +599,20 @@
             calc_title: "Calculateur", calc_subtitle: "Optimisez votre nutrition. Calculez vos protéines.",
             calc_gender: "Sexe", calc_weight: "Poids (kg)", calc_height: "Taille (cm)", calc_goal: "Objectif",
             calc_btn: "Calculer",
-            services_title: "Nos Services", services_p1: "À Gym City, nous offrons de nombreux services fitness pour atteindre vos objectifs.", services_p2: "Notre établissement à Tunis est équipé de machines modernes.",
+            services_title: "Nos Services", services_p1: `À ${GYM_ENV.gymName}, nous offrons de nombreux services fitness pour atteindre vos objectifs.`, services_p2: "Notre établissement à Tunis est équipé de machines modernes.",
             btn_get_started: "Commencer",
             prof_assess: "Évaluation Pro", prof_assess_desc: "Commencez avec une évaluation gratuite pour définir vos objectifs.",
             expert_coach: "Coaching Expert", expert_coach_desc: "Découvrez le meilleur environnement à Tunis avec nos coachs certifiés.",
-            achieve_goals: "Atteignez vos Objectifs", achieve_goals_desc: "Que vous souhaitiez prendre du muscle ou perdre du poids, Gym City est là.",
-            trainers_title: "Coachs Experts", contact_title: "Contactez Gym City"
+            achieve_goals: "Atteignez vos Objectifs", achieve_goals_desc: `Que vous souhaitiez prendre du muscle ou perdre du poids, ${GYM_ENV.gymName} est là.`,
+            trainers_title: "Coachs Experts", contact_title: `Contactez ${GYM_ENV.gymName}`
         },
         ar: {
             nav_home: "الرئيسية", nav_about: "من نحن", nav_service: "الخدمات", nav_results: "النتائج",
             nav_trainers: "المدربين", nav_price: "الأسعار", nav_booking: "تجربة مجانية", 
-            nav_calc: "الحاسبة", nav_contact: "تواصل معنا",
-            welcome: "مرحبا بك في <span>Gym City</span>", greatness: "رحلتك نحو <span>العظمة</span> تبدأ هنا",
+            nav_calc: "الحاسبة", nav_schedule: "أوقات العمل", nav_contact: "تواصل معنا",
+            price_title: "باقات الاشتراك", plan_choose: "اختر الباقة",
+            schedule_title: "أوقات العمل", sched_normal: "الأوقات العادية", sched_ramadan: "أوقات رمضان", sched_day: "اليوم", sched_time: "الوقت",
+            welcome: `مرحبا بك في <span>${GYM_ENV.gymName}</span>`, greatness: "رحلتك نحو <span>العظمة</span> تبدأ هنا",
             book_title: "احجز جلستك المجانية", 
             book_subtitle: "اتخذ الخطوة الأولى نحو أهدافك. احجز جلسة مجانية عبر الواتساب.",
             book_btn: "احجز عبر الواتساب", full_name: "الاسم الكامل", phone: "رقم الهاتف", pref_time: "الوقت المفضل (مثال الاثنين 10 صباحًا)",
@@ -540,12 +623,12 @@
             calc_title: "حاسبة اللياقة", calc_subtitle: "احسب حاجتك اليومية من البروتين وفقاً لأهدافك.",
             calc_gender: "الجنس", calc_weight: "الوزن (كغ)", calc_height: "الطول (سم)", calc_goal: "هدفك",
             calc_btn: "احسب",
-            services_title: "خدماتنا", services_p1: "في جيم سيتي، نقدم مجموعة من الخدمات لمساعدتك في أهدافك.", services_p2: "قاعتنا في تونس مجهزة بأحدث الآلات.",
+            services_title: "خدماتنا", services_p1: `في ${GYM_ENV.gymName}، نقدم مجموعة من الخدمات لمساعدتك في أهدافك.`, services_p2: "قاعتنا في تونس مجهزة بأحدث الآلات.",
             btn_get_started: "ابدأ الآن",
             prof_assess: "تقييم احترافي", prof_assess_desc: "ابدأ تقييمًا مجانيًا لمستوى لياقتك البدنية مع خبرائنا.",
             expert_coach: "تدريب احترافي", expert_coach_desc: "أفضل بيئة تدريب في تونس بمدربين معتمدين.",
-            achieve_goals: "حقق أهدافك", achieve_goals_desc: "مهما كان هدفك، جيم سيتي مجهز بالكامل لدعمك.",
-            trainers_title: "المدربين", contact_title: "تواصل مع جيم سيتي"
+            achieve_goals: "حقق أهدافك", achieve_goals_desc: `مهما كان هدفك، ${GYM_ENV.gymName} مجهز بالكامل لدعمك.`,
+            trainers_title: "المدربين", contact_title: `تواصل مع ${GYM_ENV.gymName}`
         }
     };
 
@@ -592,7 +675,7 @@
             return;
         }
 
-        let phoneNum = "21629332003";
+        let phoneNum = GYM_ENV.whatsappNumber;
         let msg = `Hello, I want to book a free training session. My name is ${name}, my phone is ${phone}, preferred time: ${time}`;
         window.open(`https://wa.me/${phoneNum}?text=${encodeURIComponent(msg)}`, '_blank');
     }
@@ -673,6 +756,65 @@
       })
 })
 
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // Populate elements with environment variables
+    if(document.getElementById("env-title")) document.getElementById("env-title").innerText = `${GYM_ENV.gymName} | Professional Fitness Center in Tunis`;
+    if(document.getElementById("env-favicon")) document.getElementById("env-favicon").href = GYM_ENV.logo;
+    if(document.getElementById("env-logo-img")) {
+        document.getElementById("env-logo-img").src = GYM_ENV.logo;
+        document.getElementById("env-logo-img").alt = `${GYM_ENV.gymName} Logo`;
+    }
+    if(document.getElementById("env-logo-text")) document.getElementById("env-logo-text").innerHTML = GYM_ENV.gymNameHtml;
+    
+    if(document.getElementById("env-address")) document.getElementById("env-address").innerHTML = `<span class="fa fa-map-marker"></span> ${GYM_ENV.address}`;
+    if(document.getElementById("env-phone")) document.getElementById("env-phone").innerHTML = `<span class="fa fa-phone"></span> ${GYM_ENV.phone}`;
+    if(document.getElementById("env-email")) document.getElementById("env-email").innerHTML = `<span class="fa fa-envelope"></span> ${GYM_ENV.email}`;
+    
+    if(document.getElementById("env-map")) document.getElementById("env-map").src = GYM_ENV.mapIframeSrc;
+    if(document.getElementById("env-fb")) document.getElementById("env-fb").href = GYM_ENV.facebook;
+    if(document.getElementById("env-ig")) document.getElementById("env-ig").href = GYM_ENV.instagram;
+    if(document.getElementById("env-copyright")) document.getElementById("env-copyright").innerHTML = `&copy; ${new Date().getFullYear()} ${GYM_ENV.gymName}. All Rights Reserved.`;
+    
+    if(document.getElementById("env-wa-float")) document.getElementById("env-wa-float").href = `https://wa.me/${GYM_ENV.whatsappNumber}`;
+
+    // Populate Pricing
+    const pricingContainer = document.getElementById("env-pricing-container");
+    if(pricingContainer && GYM_ENV.pricing) {
+        pricingContainer.innerHTML = GYM_ENV.pricing.map((plan, index) => `
+            <div class="price-card wow bounceInUp" data-wow-delay="${index * 0.2}s">
+                <h4>${plan.duration}</h4>
+                <div class="amount">${plan.price}</div>
+                <ul>
+                    ${plan.features.map(f => `<li>${f}</li>`).join('')}
+                </ul>
+                <a href="#booking" data-i18n="plan_choose">Choose Plan</a>
+            </div>
+        `).join('');
+    }
+
+    // Populate Schedule
+    const schedNormal = document.getElementById("env-sched-normal");
+    if(schedNormal && GYM_ENV.scheduleNormal) {
+        schedNormal.innerHTML = GYM_ENV.scheduleNormal.map(s => `
+            <tr><td>${s.days}</td><td>${s.hours}</td></tr>
+        `).join('');
+    }
+    
+    const schedRamadan = document.getElementById("env-sched-ramadan");
+    if(schedRamadan && GYM_ENV.scheduleRamadan) {
+        schedRamadan.innerHTML = GYM_ENV.scheduleRamadan.map(s => `
+            <tr><td>${s.days}</td><td>${s.hours}</td></tr>
+        `).join('');
+    }
+
+    // Ensure newly added dynamic elements are translated
+    let currentLang = localStorage.getItem('gym_lang') || 'en';
+    if (typeof setLang === 'function') {
+        setLang(currentLang);
+    }
+});
 </script>
 <script src="js/wow.min.js"></script>
 <script>
